@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Gripping Geography - mapGame</title>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <style>
+            .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        </style>
+    </head>
+    <script>
+        function userclick() {
+            var username = document.getElementById("");
+
+        }
+    </script>
+    <body>
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="index.html">
+                <strong>Gripping Geography</strong>
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <div class="navbar-item">
+                    <div class="buttons">
+                      <a class="button is-info" href="mapGame.html">
+                        Difficulty Levels
+                      </a>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </nav>
+        <div class="block">
+        </div>
+          <div class="columns">
+            <div class="column is-two-thirds center">
+                <div class="hero">
+                    <div class = "mapGame">
+                        <img id = "colourMapimage" class = "mapGame"  src = "assests/colourMap.png">
+                    </div>
+                    <div class = "mapGame">
+                        <img id = "colourMapimage" class = "mapGame"  src = "assests/wordBank.png">
+                    </div>
+                </div>
+            </div>
+        <div class="mapGame" id = "container"></div>
+    </body>
+    <script>
+        let cont = document.getElementById("container");
+        for (let i = 0; i < 12; i++){
+            cont.innerHTML = cont.innerHTML + '<div class="columns"><div class="column center"><p>' + (i+1) + '. </p><br><input class="input is-primary" id="inputbox' + (i) + '" type = "text" placeholder = "Ocean/Continent"><button id="submitbutton' + i 
+            + '" class="button submitclass is-info" type="submit">Submit!</button><p id="congratsmessage' + i + '"></p><p id="failmessage' + i + '"></p><br></div></div>';
+        }
+        const countries = ["arctic ocean", "south america", "pacific ocean", "europe", "antarctica", "indian ocean", "southern ocean", "africa", "atlantic ocean", "australia", "asia", "north america"]; 
+        let answer = "";
+        let counter = 0;
+        const answers = [];
+        for (let i = 0; i < 12; i++){
+            answers.push(false);
+        }
+
+        let buttons = [...document.getElementsByClassName("button submitclass is-info")];
+        buttons.forEach((button) => {
+
+            button.addEventListener("click", function(){
+                console.log(button.id.substring(12, button.id.length));
+                let id = Number(button.id.substring(12, button.id.length));
+                console.log(id);
+                answer = document.getElementById("inputbox" + id).value;
+                let fixedanswer = answer.toLowerCase();
+                console.log("FA: " + fixedanswer);
+                console.log("answer: " + answer);
+                if (countries[id] == fixedanswer){
+                    console.log("ASFH");
+                    document.getElementById("congratsmessage" + id).innerHTML = "<p>Correct!</p>";
+                    document.getElementById("failmessage" + id).innerHTML = "";
+                    answers[id] = true;
+                }
+                else{
+                    document.getElementById("congratsmessage" + id).innerHTML = "";
+                    document.getElementById("failmessage" + id).innerHTML = '<p>Incorrect.</p>';
+                    answers[id] = false;
+                }
+                console.log(answers);
+                let finished = true;
+                answers.forEach((answer) => {
+                    if (!answer){finished = false;}
+                })
+
+                if (finished){
+                    cont.innerHTML = cont.innerHTML + '<div class="block"></div><div class="columns><div class="column center"><div class="notification is-success"><p>Congratulations, you got all of them correct!</p></div></div></div><class="block"></div>';
+                }
+            
+            }) 
+        })
+        
+    </script>
+</html>

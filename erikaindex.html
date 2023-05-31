@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Africa Puzzle</title>
+        <link rel="stylesheet" href="puzzle.css">
+        <script src="mediumPuzzle.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+
+    <body>
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                    <strong>Gripping Geography</strong>
+                  </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+            <div id = "backbutton" class="navbar-brand">
+                <a class="navbar-item">
+                    <strong>Back</strong>
+                  </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+              </div>
+            </div>
+        </nav>
+        <br>
+        <h2>AFRICA MAP</h2>
+        <div id="board"></div>
+        <h2></h2>
+        <div id="pieces"></div>
+    </body>
+    <script>
+        let backbutton = document.getElementById("backbutton");
+        backbutton.addEventListener('click', function(){
+            location.replace("./index.html");
+        })
+    </script>
+</html>

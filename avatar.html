@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Gripping Geography - Avatars</title>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <script>
+        function userclick() {
+            var username = document.getElementById("");
+
+        }
+    </script>
+    <body>
+        <a href="index.html">back to login page</a>
+        <div class = "container"> <!-- Images from https://www.clipartmax.com/middle/m2i8K9K9K9N4m2K9_microphone-clip-art-free-clipart-images-microphone-clipart/-->
+            <img id = "dragonimage" onclick = "dragonclick()" class = "imageitem"  src = "assests/dragon.png">
+            <img id = "ballimage" onclick = "ballclick()" class = "imageitem" src = "assests/ball.png">
+            <img id = "donutimage" onclick = "donutclick()" class = "imageitem" src = "assests/donut.png">
+            <img id = "pizzaimage" onclick = "pizzaclick()" class = "imageitem" src = "assests/pizza.png">
+            <img id = "footballimage" onclick = "footballclick()" class = "imageitem" src = "assests/football.png">
+            <img id = "micimage" onclick = "micclick()" class = "imageitem" src = "assests/mic.png">
+            <img id = "burgerimage" onclick = "burgerclick()" class = "imageitem" src = "assests/burger.png">
+        </div>
+    </body>
+    <script>
+        var dragon = 0;
+        var ball = 0;
+        var donut = 0;
+        var pizza = 0;
+        var football = 0;
+        var mic = 0;
+        var burger = 0;
+
+        function dragonclick(){
+            var dragonimage = document.getElementById("dragonimage");
+            dragon = dragon + 1;
+            if (dragon > 4){
+                dragonimage.style.opacity = 1;
+            }
+        }
+
+        function ballclick(){
+            var ballimage = document.getElementById("ballimage");
+            ball = ball + 1;
+            if (ball > 4){
+                ballimage.style.opacity = 1;
+            }
+        }
+
+        function donutclick(){
+            var donutimage = document.getElementById("donutimage");
+            donut = donut + 1;
+            if (donut > 4){
+                donutimage.style.opacity = 1;
+            }
+        }
+
+        function pizzaclick(){
+            var pizzaimage = document.getElementById("pizzaimage");
+            pizza = pizza + 1;
+            if (pizza > 4){
+                pizzaimage.style.opacity = 1;
+            }
+        }
+
+        function footballclick(){
+            var footballimage = document.getElementById("footballimage");
+            football = football + 1;
+            if (football > 4){
+                footballimage.style.opacity = 1;
+            }
+        }
+
+        function micclick(){
+            var micimage = document.getElementById("micimage");
+            mic = mic + 1;
+            if (mic > 4){
+                micimage.style.opacity = 1;
+            }
+        }
+
+        function burgerclick(){
+            var burgerimage = document.getElementById("burgerimage");
+            burger = burger + 1;
+            if (burger > 4){
+                burgerimage.style.opacity = 1;
+            }
+        }
+    </script>
+</html>

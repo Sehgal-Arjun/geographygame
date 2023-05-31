@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Gripping Geography - mapGame</title>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel = "stylesheet" href = "index.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <style>
+            .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        </style>
+    </head>
+    <script>
+        function userclick() {
+            var username = document.getElementById("");
+    
+        }
+    </script>
+    <body>
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="index.html">
+                <strong>Gripping Geography</strong>
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <div class="navbar-item">
+                    <div class="buttons">
+                      <a class="button is-info" href="mapGame.html">
+                        Difficulty Levels
+                      </a>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </nav>
+        <div class="block">
+        </div>
+        <div class = "mapGame">
+            <img id = "ncolourMapimage" onclick = "ncmapclick()" class = "mapGame"  src = "assests/map.jpg">
+        </div>
+        <div class="container">
+            <form onsubmit = "return false">
+                <br>
+                <input class="input is-success" id="inputbox" type="text" placeholder="Ocean/Continent">
+                <button class="button is-info" id="submitbutton" type="submit">Submit!</button>
+                <p id="congratsmessage"></p>
+                <p id="failmessage"></p>
+                <br>
+            </form>
+        </div>
+        <br>
+        <div class = "container">
+            <img id = "arcticocean" class = "hardInput"  src = "assests/ArcticOcean.png">
+            <img id = "southamerica" class = "hardInput" src = "assests/SouthAmerica.png">
+            <img id = "pacificocean" class = "hardInput" src = "assests/PacificOcean.png">
+            <img id = "europe" class = "hardInput" src = "assests/Europe.png">
+            <img id = "antarctica" class = "hardInput" src = "assests/Antarctica.png">
+            <img id = "indianocean" class = "hardInput" src = "assests/IndianOcean.png">
+            <img id = "southernocean" class = "hardInput" src = "assests/SouthernOcean.png">
+            <img id = "africa" class = "hardInput" src = "assests/Africa.png">
+            <img id = "atlanticocean" class = "hardInput" src = "assests/Atlantic ocean.png">
+            <img id = "australia" class = "hardInput" src = "assests/Australia.png">
+            <img id = "asia" class = "hardInput" src = "assests/Asia.png">
+            <img id = "northamerica" class = "hardInput" src = "assests/NorthAmerica.png">
+        </div>
+    </body>
+    <script>
+        const countries = ["arctic ocean", "south america", "pacific ocean", "europe", "antarctica", "indian ocean", "southern ocean", "africa", "atlantic ocean", "australia", "asia", "north america"]; 
+        let answer = "";
+        let counter = 0;
+
+        let button = document.getElementById("submitbutton");
+        button.addEventListener("click", function(){
+            answer = document.getElementById("inputbox").value;
+            document.getElementById("inputbox").value = "";
+            let fixedanswer = answer.replace(/\s+/g, '').trim().toLowerCase();
+            let answerdiv = document.getElementById(fixedanswer);
+            for (const element of countries) {
+                if (answer.toLowerCase() == element  && answerdiv.style.opacity == 1) {
+                    document.getElementById("failmessage").innerHTML = "You have already said this";
+                    document.getElementById("congratsmessage").innerHTML = "";
+                }
+                else if (answer.toLowerCase() == element) {
+                    answerdiv.style.opacity = 1;
+                    counter++;
+                    document.getElementById("congratsmessage").innerHTML = "Correct!";
+                    document.getElementById("failmessage").innerHTML = "";
+                }
+            }
+            if (!countries.includes(answer.toLowerCase())){
+                document.getElementById("failmessage").innerHTML = "Incorrect";
+                document.getElementById("congratsmessage").innerHTML = "";
+            }
+            console.log(counter);
+            if (counter == countries.length){
+                document.getElementById("congratsmessage").innerHTML = '<div class="columns"><div class="column"><div class="notification is-success center"><p>Well done, you got them all!</p></div></div></div>';
+            }
+        });
+    </script>
+</html>

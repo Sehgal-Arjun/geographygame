@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Gripping Geography - mapGame</title>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+    <script>
+        function userclick() {
+            var username = document.getElementById("");
+
+        }
+    </script>
+    <body>
+        <a href="mapGame.html">back to levels page</a>
+        <div class = "mapGame">
+            <img id = "colourMapimage" onclick = "cmapclick()" class = "mapGame"  src = "assests/colourMap.png">
+        </div>
+        <div class="mapGame" id = "container"></div>
+    </body>
+    <script>
+        let cont = document.getElementById("container");
+        for (let i = 0; i < 12; i++){
+            cont.innerHTML = cont.innerHTML + "<p>" + (i+1) + '. Ocean/Continent:</p><br><input id="inputbox' + (i) + '" type = "text" placeholder = "Ocean/Continent"><button id="submitbutton' + i 
+            + '" class="submitbuttonclass">Submit!</button><p id="congratsmessage' + i + '"></p><p id="failmessage' + i + '"></p><br>';
+        }
+        const countries = ["arctic ocean", "south america", "pacific ocean", "europe", "antarctica", "indian ocean", "southern ocean", "africa", "atlantic ocean", "australia", "asia", "north america"]; 
+        let answer = "";
+        let counter = 0;
+        const answers = [];
+        for (let i = 0; i < 12; i++){
+            answers.push(false);
+        }
+
+        let buttons = [...document.getElementsByClassName("submitbuttonclass")];
+        buttons.forEach((button) => {
+
+            button.addEventListener("click", function(){
+                console.log(button.id.substring(12, button.id.length));
+                let id = Number(button.id.substring(12, button.id.length));
+                console.log(id);
+                answer = document.getElementById("inputbox" + id).value;
+                let fixedanswer = answer.toLowerCase();
+                console.log("FA: " + fixedanswer);
+                console.log("answer: " + answer);
+                if (countries[id] == fixedanswer){
+                    console.log("ASFH");
+                    document.getElementById("congratsmessage" + id).innerHTML = "<p>Well done, this is correct!</p>";
+                    document.getElementById("failmessage" + id).innerHTML = "";
+                    answers[id] = true;
+                }
+                else{
+                    document.getElementById("congratsmessage" + id).innerHTML = "";
+                    document.getElementById("failmessage" + id).innerHTML = "<p>That is incorrect. Try again.</p>";
+                    answers[id] = false;
+                }
+                console.log(answers);
+                let finished = true;
+                answers.forEach((answer) => {
+                    if (!answer){finished = false;}
+                })
+
+                if (finished){
+                    document.getElementById("congratsmessage" + id).innerHTML = "Congratulations, you got all of them correct!";
+                }
+            
+            }) 
+        })
+        
+    </script>
